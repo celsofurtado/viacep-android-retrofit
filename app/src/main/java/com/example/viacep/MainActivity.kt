@@ -1,8 +1,11 @@
 package com.example.viacep
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -22,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Ocultar a toolBar/Appbar
-        supportActionBar!!.hide()
+        //supportActionBar!!.hide()
 
         editTextCep = findViewById(R.id.editTextCEP)
         textViewResultado = findViewById(R.id.textViewResultado)
@@ -41,6 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun buscarCep() {
+
         val retrofit = RetrofitFactory.getRetrofit().create(CEPService::class.java)
 
         val call: Call<CepModel> = retrofit.getCep(editTextCep.text.toString())
@@ -52,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                 if (!response.message().equals("Bad Request")) {
 
                     val cep = response.body()
+
                     val resultado = StringBuilder()
                     resultado
                         .appendLine("Logradouro: ${cep!!.logradouro}")
@@ -75,4 +80,20 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.menu, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        val i = Intent(this, CepsActivity::class.java)
+        startActivity(i)
+
+        return true
+    }
+
 }

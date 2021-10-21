@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".CepsActivity">
+
+    <TextView
+        android:id="@+id/textViewCepsTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Busca de CEP por Estado e Logradouro"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/tertiary_text_light"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextUF"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="UF"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/textViewCepsTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCepsTitulo" />
+
+    <EditText
+        android:id="@+id/editTextCidade"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Cidade"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/textViewCepsTitulo"
+        app:layout_constraintStart_toEndOf="@+id/editTextUF"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCepsTitulo" />
+
+    <Button
+        android:id="@+id/buttonCepsBuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Buscar"
+        app:layout_constraintEnd_toEndOf="@+id/editTextCidade"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCidade" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_ceps"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonCepsBuscar"
+        app:layout_constraintStart_toStartOf="@+id/editTextUF"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCepsBuscar"
+        tools:listitem="@layout/lista_ceps_layout" />
+
+    <EditText
+        android:id="@+id/editTextPalavraChave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Palavra chave"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCepsBuscar"
+        app:layout_constraintStart_toStartOf="@+id/editTextUF"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCidade" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
